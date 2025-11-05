@@ -95,6 +95,40 @@ Model Evaluation: Evaluate the models using greedy search and BLEU score.
    - Attention visualization
    - Qualitative assessment of generated captions
 
+## Implementation Summary
+
+This project implements an image captioning model with attention and text-to-speech output. The key steps are:
+
+### Data Loading and Preprocessing:
+
+Flickr8k dataset images and captions are loaded.
+Captions are preprocessed: tokenized, filtered, and padded.
+Images are resized and preprocessed for the InceptionV3 model.
+Image features are extracted using a pre-trained InceptionV3 model to save memory and computational time.
+Image paths and captions are split into training and testing sets.
+A data pipeline using tf.data.Dataset is created to efficiently load image features and captions in batches.
+
+### Model Architecture:
+
+An Encoder (CNN_Custom_Encoder) uses a fully connected layer to process the extracted image features.
+An Attention mechanism (BahdanauAttention) calculates the attention weights, allowing the model to focus on relevant parts of the image during caption generation. Different attention mechanisms (Luong, Dot-Product) were also defined.
+A Decoder (RNN_Custom_Decoder) uses a GRUCell and an Embedding layer to generate captions word by word, using the context vector from the attention mechanism and the previous word.
+
+### Training and Optimization:
+
+The model is trained using the Adam optimizer and Sparse Categorical Crossentropy loss with masking for padded sequences.
+Teacher forcing is applied during training to guide the decoder with the true next word.
+Training performed for defined number of epochs as it provided better results(predicted captions).
+Early stopping is provided as choice for implementation to monitor test loss and prevent overfitting and saving the best model checkpoint but the Predicted captions are more near to ground truth without early stopping so it exists as choice but not used.
+Training progress and loss curves are visualized.
+
+### Model Evaluation and Prediction:
+
+A greedy search function is defined to generate captions for new images.
+The BLEU score is used to evaluate the quality of the generated captions against the real captions, with different weightings for n-grams.
+A function is created to convert the generated captions into audio using gTTS.
+Attention maps are visualized to show which parts of the image the model is focusing on for each word in the generated caption.
+
 ## Evaluation Metrics
 
 ### BLEU Score Calculation
