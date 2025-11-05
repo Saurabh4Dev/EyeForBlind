@@ -19,7 +19,7 @@ The solution enables blind users to understand image content.
 - **Visualization**: Attention map visualization to understand model focus
 
 
-## 📋 Requirements
+## Requirements
 
 ### System Requirements
 - Python 3.8 or higher
@@ -95,7 +95,7 @@ Model Evaluation: Evaluate the models using greedy search and BLEU score.
    - Qualitative assessment of generated captions
 
 
-## 🛠️ Advanced Usage
+## Advanced Usage
 
 ### Training Configuration
 ```Parameters
