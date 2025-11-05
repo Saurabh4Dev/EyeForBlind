@@ -41,6 +41,7 @@ flickr8k_data/
 ```
 
 ### 2. Configuration
+```
 Config variables and parameters:
     IMAGES_PATH = "/path/to/your/flickr8k_data/Images"
     CAPTIONS_PATH = "/path/to/your/flickr8k_data/captions.txt"
