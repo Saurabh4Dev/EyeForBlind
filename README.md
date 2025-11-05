@@ -50,7 +50,7 @@ Config variables and parameters:
 
 ### 3. Project completion steps
 ```
-The major steps that you have to perform can be briefly summarised in the following steps:
+The major steps to perform can be briefly summarised in the following steps:
 
 Data Understanding: Load the data and understand the representation.
 Data Preprocessing:Process both images and captions to the desired format.
@@ -94,38 +94,6 @@ Model Evaluation: Evaluate the models using greedy search and BLEU score.
    - BLEU score calculation (1-gram to 4-gram)
    - Attention visualization
    - Qualitative assessment of generated captions
-
-
-## Advanced Usage
-
-### Training Configuration
-```Parameters
-EPOCHS = 15
-BATCH_SIZE = 32
-```
-
-### Caption Generation
-```python
-    real_caption = ' '.join([tokenizer.index_word[i] for i in cap_test_data[rid] if i not in [0]])
-    result, attention_plot, pred_test = evaluate(test_image)
-    real_caption=filt_text(real_caption)
-    pred_caption=' '.join(result).rsplit(' ', 1)[0]
-    real_appn = []
-    real_appn.append(real_caption.split())
-    reference = real_appn
-    candidate = pred_caption.split()
-
-    score = sentence_bleu(reference, candidate, weights=weights)#set your weights
-    print(f"BELU score: {score*100}")
-    print ('Real Caption:', real_caption)
-    print ('Prediction Caption:', pred_caption)
-```
-
-### Model Evaluation
-```python
-# Evaluate on test dataset
-result, attention_plot, pred_test = evaluate(test_image)
-```
 
 ## Evaluation Metrics
 
